@@ -1,4 +1,4 @@
-package qc.fr.uphf.bugTracking.controller;
+/*package qc.fr.uphf.bugTracking.controller;
 
 import java.util.List;
 
@@ -18,4 +18,4 @@ public class BugController {
 	{
 		return bugRepository.findAll();
 	}
-}
+}*/
