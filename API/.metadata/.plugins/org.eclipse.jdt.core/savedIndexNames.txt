@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+D:\Professionel\S7\BDD\Projet\Systeme-de-Rapport-de-Bug\.metadata\.plugins\org.eclipse.jdt.core
-1448510345.index
-1690618251.index
