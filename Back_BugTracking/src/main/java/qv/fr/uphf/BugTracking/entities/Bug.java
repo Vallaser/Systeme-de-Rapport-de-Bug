@@ -3,12 +3,12 @@ package qv.fr.uphf.BugTracking.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,12 +33,13 @@ public class Bug {
 	private String description;
 	private String priority;
 	private String etat;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreation;
 	
-	@OneToMany(mappedBy = "bug")
-	private List<Comment> comments;
-	@ManyToOne
-	@JoinColumn(name = "id_developer")
-	private Developer developer;
+	@Column(nullable = true)
+	private int id_developer;
+	
+	@OneToMany//(mappedBy = "bug")
+	@JoinColumn(name = "id_bug")
+	private List<Comment> comments; //Liste des commentaires du bug
 }

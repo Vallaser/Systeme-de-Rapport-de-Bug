@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -27,14 +25,10 @@ import lombok.Setter;
 public class Comment {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO) 
 	private int id_comment;
+	private int id_bug;
 	private String comment;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateComment;
+	private int id_developer;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_bug")
-	private Bug bug;
-	@ManyToOne
-	@JoinColumn(name = "id_developer")
-	private Developer developer;
 }
