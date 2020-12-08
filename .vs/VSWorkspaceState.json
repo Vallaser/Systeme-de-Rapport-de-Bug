@@ -1,11 +1,11 @@
 {
   "ExpandedNodes": [
-    "\\BACK",
-    "\\BACK\\bugTracking",
-    "\\FrontEnd",
-    "\\FrontEnd\\src",
-    "\\FrontEnd\\src\\app",
-    "\\FrontEnd\\src\\app\\student-list"
+    "",
+    "\\FRONT",
+    "\\FRONT\\src",
+    "\\FRONT\\src\\app",
+    "\\FRONT\\src\\app\\menu"
   ],
+  "SelectedNode": "\\FRONT\\src\\app\\app.component.html",
   "PreviewInSolutionExplorer": false
 }

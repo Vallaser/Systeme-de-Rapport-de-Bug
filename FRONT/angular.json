@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "FrontEnd": {
+    "FRONT": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/FrontEnd",
+            "outputPath": "dist/FRONT",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,6 @@
               "src/assets"
             ],
             "styles": [
-              
               "src/styles.css"
             ],
             "scripts": []
@@ -66,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "FrontEnd:build"
+            "browserTarget": "FRONT:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "FrontEnd:build:production"
+              "browserTarget": "FRONT:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "FrontEnd:build"
+            "browserTarget": "FRONT:build"
           }
         },
         "test": {
@@ -114,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "FrontEnd:serve"
+            "devServerTarget": "FRONT:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "FrontEnd:serve:production"
+              "devServerTarget": "FRONT:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "FrontEnd"
+  "defaultProject": "FRONT"
 }

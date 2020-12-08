@@ -1,0 +1,47 @@
+
+<div>
+  <label for="site-search"></label>
+  <input type="search" id="site-search" name="q"
+         aria-label="Search through site content">
+  <button (click)="clickEvent()">
+    Search
+  </button>
+  <h2>{{msg}}</h2>
+</div>
+
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>TO DO</h2>
+    <div cdkDropList
+         #todoList="cdkDropList"
+         [cdkDropListData]="todo"
+         class="example-list"
+         (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>IN PROGRESS</h2>
+    <div cdkDropList
+         #doneList="cdkDropList"
+         [cdkDropListData]="inprogress"
+         class="example-list"
+         (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of inprogress" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>DONE</h2>
+    <div cdkDropList
+         #doneList="cdkDropList"
+         [cdkDropListData]="done"
+         class="example-list"
+         (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
+
+
