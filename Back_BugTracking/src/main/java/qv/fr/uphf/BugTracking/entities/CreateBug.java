@@ -19,6 +19,6 @@ public class CreateBug {
 	private String priority;
 	private String etat;
 	private Date dateCreation;
-	private int id_developer;
+	private Integer id_developer;
 	private List<Comment> comments; //Liste des commentaires du bug
 }

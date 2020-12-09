@@ -19,5 +19,6 @@ public class BugTrackingApplication {
 	 return String.format("Hello %s!", name);
 	 }
 
+	//https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories
 
 }

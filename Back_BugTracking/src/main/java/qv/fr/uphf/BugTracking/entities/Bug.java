@@ -27,7 +27,7 @@ import lombok.Setter;
 
 @Entity //JPA
 public class Bug {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_bug;
 	private String title;
 	private String description;
@@ -37,7 +37,7 @@ public class Bug {
 	private Date dateCreation;
 	
 	@Column(nullable = true)
-	private int id_developer;
+	private Integer id_developer;
 	
 	@OneToMany//(mappedBy = "bug")
 	@JoinColumn(name = "id_bug")

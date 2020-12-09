@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,6 +32,7 @@ public class Developer {
 	
 	@OneToMany
 	@JoinColumn(name = "id_developer")
+	//@JsonManagedReference
 	private List<Bug> bugs; //Liste des bugs affecter au developer/
 
 }
