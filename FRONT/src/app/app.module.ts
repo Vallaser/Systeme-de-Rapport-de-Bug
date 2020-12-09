@@ -7,15 +7,18 @@ import { MenuComponent } from './menu/menu.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 
-
 // search module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BugListComponent } from './bug-list/bug-list.component';
+import { DeveloperListComponent } from './developer-list/developer-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    BugListComponent,
+    DeveloperListComponent
   ],
   imports: [
     BrowserModule,

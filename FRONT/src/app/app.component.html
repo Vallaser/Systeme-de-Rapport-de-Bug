@@ -1,38 +1,4 @@
-<input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+<router-outlet></router-outlet>
 
-<div cdkDropListGroup>
-  <div class="example-container">
-    <h2>TO DO</h2>
-    <div cdkDropList
-         #todoList="cdkDropList"
-         [cdkDropListData]="todo"
-         class="example-list"
-         (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo | filter:searchText" cdkDrag>{{item.id}} {{item.name}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>IN PROGRESS</h2>
-    <div cdkDropList
-         #doneList="cdkDropList"
-         [cdkDropListData]="inprogress"
-         class="example-list"
-         (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of inprogress | filter:searchText" cdkDrag>{{item.id}} {{item.name}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>DONE</h2>
-    <div cdkDropList
-         #doneList="cdkDropList"
-         [cdkDropListData]="done"
-         class="example-list"
-         (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done | filter:searchText" cdkDrag>{{item.id}} {{item.name}}</div>
-    </div>
-  </div>
-</div>
 
 
