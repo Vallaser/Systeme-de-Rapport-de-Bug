@@ -4,8 +4,9 @@
     "\\FRONT",
     "\\FRONT\\src",
     "\\FRONT\\src\\app",
+    "\\FRONT\\src\\app\\cdk-drag-drop-overview-example",
     "\\FRONT\\src\\app\\menu"
   ],
-  "SelectedNode": "\\FRONT\\src\\app\\app.component.html",
+  "SelectedNode": "\\FRONT\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

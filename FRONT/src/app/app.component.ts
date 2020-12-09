@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Input, OnChanges, SimpleChanges } from '@angular/core';
+
 
 /**
  * @title Basic Drag&Drop
@@ -8,42 +10,43 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
 
+
   msg: string = "";
+
+  recherche: string = "";
+
+  filter: string = "";
+
   constructor() {
-
+  
   }
-
-  clickEvent() {
-    this.msg = 'Button is Clicked';
-    return this.msg;
-  }
-
-
+  
+  searchText: any;
 
   todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
+    { id: 11, name: 'Mr. Nice'},
+    { id: 12, name: 'Narco'},
+    { id: 13, name: 'Bombasto'}
   ];
 
   inprogress = [
-    'test'
+    { id: 14, name: 'Celeritas'},
+    { id: 15, name: 'Magneta'},
+    { id: 16, name: 'RubberMan'}
   ];
 
   done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
+    { id: 17, name: 'Dynama'},
+    { id: 18, name: 'Dr IQ'},
+    { id: 19, name: 'Magma'},
+    { id: 20, name: 'Tornado'}
   ];
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
