@@ -22,14 +22,14 @@ export class ShowDevComponent implements OnInit {
 
   ngOnInit(): void {
     this.developers = this.service.getDevelopers();
-    //this.refreshDevList();
   }
 
 
   addClick() {
     this.dev = {
       id_developer: 0,
-      name: ""
+      name: "",
+      avatar: ""
     }
     this.ModalTitle = "Add Developer";
     this.ActivateAddEditDevComp = true;

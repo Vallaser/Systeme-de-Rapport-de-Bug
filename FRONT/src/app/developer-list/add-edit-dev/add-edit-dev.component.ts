@@ -12,11 +12,13 @@ export class AddEditDevComponent implements OnInit {
 
   @Input() dev: any;
   id_developer: number=0;
-  name: string ="";
+  name: string = "";
+  avatar: string = "";
 
   ngOnInit(): void {
     this.id_developer = this.dev.id_developer;
     this.name = this.dev.name;
+    this.avatar = this.dev.avatar;
   }
 
 
@@ -24,19 +26,19 @@ export class AddEditDevComponent implements OnInit {
     var val = {
       id_developer: this.id_developer,
       name: this.name,
-      avatar: "ll"
+      avatar: this.avatar
     };
     this.service.createDeveloper(val).subscribe();
   }
 
   updateDeveloper() {
-    /*var val = {
-      Developer: this.DeveloperId,
-      DeveloperName: this.DeveloperName
+    var val = {
+      id_developer: this.id_developer,
+      name: this.name,
+      avatar: this.avatar
     };
-    this.service.updateDeveloper(val).subscribe(res => {
-      alert(res.toString());
-    });*/
+    this.service.updateDeveloper(val).subscribe();
+      
   }
 
 }
