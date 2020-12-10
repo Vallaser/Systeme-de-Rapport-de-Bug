@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-developer-list',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeveloperListComponent implements OnInit {
 
-  constructor() { }
+  developers: any;
+
+  constructor(
+    private service:SharedService) {  }
+
 
   ngOnInit(): void {
+    this.developers = this.service.getDevelopers();
+    //this.developers = this.refreshDevList();
   }
 
+  refreshDevList() {
+    this.service.getDevelopers().subscribe(data => {
+      this.developers = data;
+    });
+  }
+  
 }

@@ -1,10 +1,10 @@
-<table >
+<table>
   <tr>
     <td>
       <button class="btn btn-primary" routerLink="developer">Developers</button>
     </td>
     <td>
-      <input class="form-control"  type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
     </td>
   </tr>
 </table>
@@ -14,21 +14,20 @@
     <h2>TO DO</h2>
     <div cdkDropList
          #todoList="cdkDropList"
-         [cdkDropListData]="todo"
+         [cdkDropListData]="bugsTODO"
          class="example-list"
          (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo | filter:searchText" cdkDrag>{{item.id}} {{item.name}}</div>
+      <div class="example-box" *ngFor="let item of bugsTODO | filter:searchText | async" cdkDrag>{{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.id_developer | json}}</div>
     </div>
   </div>
-
   <div class="example-container">
     <h2>IN PROGRESS</h2>
     <div cdkDropList
          #doneList="cdkDropList"
-         [cdkDropListData]="inprogress"
+         [cdkDropListData]="bugsINPROGRESS"
          class="example-list"
          (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of inprogress | filter:searchText" cdkDrag>{{item.id}} {{item.name}}</div>
+      <div class="example-box" *ngFor="let item of bugsINPROGRESS | filter:searchText | async" cdkDrag>{{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.id_developer | json}}</div>
     </div>
   </div>
 
@@ -36,13 +35,15 @@
     <h2>DONE</h2>
     <div cdkDropList
          #doneList="cdkDropList"
-         [cdkDropListData]="done"
+         [cdkDropListData]="bugsDONE"
          class="example-list"
          (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done | filter:searchText" cdkDrag>{{item.id}} {{item.name}}</div>
+      <div class="example-box" *ngFor="let item of bugsDONE | filter:searchText | async" cdkDrag>{{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.id_developer | json}}</div>
     </div>
   </div>
 </div>
+
+
 
 
 

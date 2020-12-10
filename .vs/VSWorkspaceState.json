@@ -2,11 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\FRONT",
+    "\\FRONT\\e2e",
     "\\FRONT\\src",
     "\\FRONT\\src\\app",
-    "\\FRONT\\src\\app\\cdk-drag-drop-overview-example",
-    "\\FRONT\\src\\app\\menu"
+    "\\FRONT\\src\\app\\bug-list",
+    "\\FRONT\\src\\app\\developer-list",
+    "\\FRONT\\src\\app\\menu",
+    "\\FRONT\\src\\environments"
   ],
-  "SelectedNode": "\\FRONT\\src\\app\\app.module.ts",
+  "SelectedNode": "\\FRONT\\src\\app\\shared.service.ts",
   "PreviewInSolutionExplorer": false
 }
