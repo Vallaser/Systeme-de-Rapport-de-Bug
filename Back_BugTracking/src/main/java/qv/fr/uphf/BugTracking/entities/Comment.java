@@ -6,8 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,12 +28,21 @@ import lombok.Setter;
 
 @Entity //JPA
 public class Comment {
-	@Id @GeneratedValue(strategy=GenerationType.AUTO) 
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private int id_comment;
-	private int id_bug;
 	private String comment;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "YYYY:MM:dd")
 	private Date dateComment;
-	private int id_developer;
+	
+	@ManyToOne
+	@JsonBackReference
+	@JoinColumn(name = "id_bug")
+	private Bug bug;
+	
+	@ManyToOne
+	@JsonBackReference
+	@JoinColumn(name = "id_developer")
+	private Developer developer;
 	
 }

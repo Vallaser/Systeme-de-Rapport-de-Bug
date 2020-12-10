@@ -1,6 +1,7 @@
 package qv.fr.uphf.BugTracking.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import qv.fr.uphf.BugTracking.entities.Bug;
 import qv.fr.uphf.BugTracking.entities.CreateBug;
+import qv.fr.uphf.BugTracking.entities.Developer;
 import qv.fr.uphf.BugTracking.exception.ResourceNotFoundException;
 import qv.fr.uphf.BugTracking.repositories.BugRepository;
+import qv.fr.uphf.BugTracking.repositories.DeveloperRepository;
 
 @RestController
 public class BugController {
 
 	@Autowired
 	BugRepository bugsRepository;
+	@Autowired
+	DeveloperRepository developersRepository;
 	
 	@GetMapping("bugs")
 	public List<Bug> getBugs()
@@ -35,21 +40,55 @@ public class BugController {
         return bugsRepository.findById(id).orElse(null);
     }
 	
+	@GetMapping("bugs2/{etat}")
+	public List<Bug> getBugsEtat(@PathVariable("etat") String etat)
+	{
+		return bugsRepository.findByEtat(etat);
+	}
+	
+	@GetMapping("bugsdev/{id}")
+	public Developer getBugDev(@PathVariable("id") Integer id) {
+		Optional<Bug> bugOpt = bugsRepository.findById(id);
+		if(bugOpt.isPresent())
+		{
+			return bugOpt.get().getDeveloper();
+		}
+		return null;
+    }
+	
 	@PostMapping("bugs")
     public Bug createBug(@Validated @RequestBody CreateBug bug) { 
-        return bugsRepository.save(
-            Bug
-            .builder()
-            .title(bug.getTitle())
-            .description(bug.getDescription())
-            .priority(bug.getPriority())
-            .etat(bug.getEtat())
-            .dateCreation(bug.getDateCreation())
-            .id_developer(bug.getId_developer())
-            //.comments(bug.getComments())
-            .build()
-        );
-    }
+		if(bug.getDeveloper_id() != null)
+		{
+			Optional<Developer> devOptionel = developersRepository.findById(bug.getDeveloper_id());
+			if(devOptionel.isPresent())
+				return bugsRepository.save(
+			            Bug
+			            .builder()
+			            .title(bug.getTitle())
+			            .description(bug.getDescription())
+			            .priority(bug.getPriority())
+			            .etat(bug.getEtat())
+			            .dateCreation(bug.getDateCreation())
+			            .developer(devOptionel.get())
+			            //.comments(bug.getComments())
+			            .build()
+			        );
+		}
+			return bugsRepository.save(
+	            Bug
+	            .builder()
+	            .title(bug.getTitle())
+	            .description(bug.getDescription())
+	            .priority(bug.getPriority())
+	            .etat(bug.getEtat())
+	            .dateCreation(bug.getDateCreation())
+	            .developer(null)
+	            //.comments(bug.getComments())
+	            .build()
+	        );
+	    }
+	        
  
 	@DeleteMapping("bugs/{id}")
     public ResponseEntity<?> deleteBug(@PathVariable("id") Integer id) {

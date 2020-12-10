@@ -1,7 +1,6 @@
 package qv.fr.uphf.BugTracking.entities;
 
 import java.util.Date;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,6 +18,5 @@ public class CreateBug {
 	private String priority;
 	private String etat;
 	private Date dateCreation;
-	private Integer id_developer;
-	private List<Comment> comments; //Liste des commentaires du bug
+	private Integer developer_id;
 }

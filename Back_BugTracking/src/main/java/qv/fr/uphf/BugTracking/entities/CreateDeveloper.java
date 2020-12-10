@@ -15,6 +15,5 @@ public class CreateDeveloper {
 	
 	private String name;
 	private String avatar; //à définir
-	private List<Bug> bugs; //Liste des bugs affecter au developer/
 
 }

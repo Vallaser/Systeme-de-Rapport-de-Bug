@@ -13,9 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateComment {
 	
-	private int id_bug;
 	private String comment;
 	private Date dateComment;
-	private int id_developer;
-
+	private Integer bug_id;
+	private Integer developer_id;
+	
 }

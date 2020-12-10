@@ -16,6 +16,7 @@ public interface BugRepository extends JpaRepository<Bug, Integer>{
 	@Modifying
 	@Query("update Bug bug set bug.title = ?1 where bug.id_bug = ?2")
 	void setBugTitleById(String titre, Integer id);
+	List<Bug> findByEtat(String etat);
 	
 	/*@Modifying
 	@Query("update User u set u.firstname = ?1, u.lastname = ?2 where u.id = ?3")
