@@ -15,6 +15,9 @@ import { SharedService } from './shared.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShowDevComponent } from './developer-list/show-dev/show-dev.component';
+import { AddEditDevComponent } from './developer-list/add-edit-dev/add-edit-dev.component';
+import { BugDetailComponent } from './bug-detail/bug-detail.component';
 
 
 
@@ -23,7 +26,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     MenuComponent,
     BugListComponent,
-    DeveloperListComponent
+    DeveloperListComponent,
+    ShowDevComponent,
+    AddEditDevComponent,
+    BugDetailComponent
   ],
   exports: [
     AppComponent

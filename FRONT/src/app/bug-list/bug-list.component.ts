@@ -14,7 +14,6 @@ import { SharedService } from 'src/app/shared.service';
 export class BugListComponent implements OnInit {
 
 
-
   searchText: any;
 
   bugs: any;

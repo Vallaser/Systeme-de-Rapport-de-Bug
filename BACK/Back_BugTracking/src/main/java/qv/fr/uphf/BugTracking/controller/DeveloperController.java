@@ -1,6 +1,5 @@
 package qv.fr.uphf.BugTracking.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import qv.fr.uphf.BugTracking.entities.Bug;
 import qv.fr.uphf.BugTracking.entities.CreateDeveloper;
 import qv.fr.uphf.BugTracking.entities.Developer;
 import qv.fr.uphf.BugTracking.exception.ResourceNotFoundException;
@@ -55,11 +55,14 @@ public class DeveloperController {
 
 	        return developersRepository.findById(id)
 	                .map(developer -> {
+	                	for(Bug bug : developer.getBugs())
+	                		bug.setDeveloper(null);
 	                	developersRepository.delete(developer);
 	                    return ResponseEntity.ok().build();
 	                }).orElseThrow(() -> new ResourceNotFoundException("Developer not found with id " + id));
 
 	    }
+	 
 	 
 	 @PutMapping("developers/{id}/avatar=/{avatar}")
 		public ResponseEntity<?> updateDeveloperAvatar(@PathVariable("id") Integer id, @PathVariable("avatar") String avatar)

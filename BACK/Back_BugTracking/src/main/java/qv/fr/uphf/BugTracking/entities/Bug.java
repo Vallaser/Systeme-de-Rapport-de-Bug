@@ -3,6 +3,7 @@ package qv.fr.uphf.BugTracking.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,10 +44,10 @@ public class Bug {
 	
 	@ManyToOne
 	@JsonBackReference
-	@JoinColumn(name = "id_developer")
+	@JoinColumn(name = "id_developer" , nullable = true)
 	private Developer developer;
 	
-	@OneToMany(mappedBy = "bug")
+	@OneToMany(mappedBy = "bug" , cascade = {CascadeType.REMOVE})
 	@JsonManagedReference
 	private List<Comment> comments; //Liste des commentaires du bug*/
 	

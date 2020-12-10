@@ -8,21 +8,13 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class DeveloperListComponent implements OnInit {
 
-  developers: any;
-
-  constructor(
-    private service:SharedService) {  }
+  constructor() {  }
 
 
   ngOnInit(): void {
-    this.developers = this.service.getDevelopers();
-    //this.developers = this.refreshDevList();
+    
   }
 
-  refreshDevList() {
-    this.service.getDevelopers().subscribe(data => {
-      this.developers = data;
-    });
-  }
+  
   
 }

@@ -64,9 +64,11 @@ export class SharedService {
     return this.http.post(this.APIUrl + '/developers', val);
   }
 
-  deleteDeveloper(val: any) {
-    return this.http.delete(this.APIUrl + '/developers', val);
+  updateDeveloper(val: any) {
+    return this.http.put(this.APIUrl + '/developers/{id}/avatar=/{avatar}', val);
   }
 
-
+  deleteDeveloper(val: any) {
+    return this.http.delete(this.APIUrl + '/developers/'+val.id_developer);
+  }
 }
