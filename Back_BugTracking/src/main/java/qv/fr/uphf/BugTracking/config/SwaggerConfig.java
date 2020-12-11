@@ -11,6 +11,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * SwaggerConfig la classe qui configure le swagger du projet
+ * @author Quentin Colras
+ */
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -28,9 +33,9 @@ public class SwaggerConfig {
     // Describe your apis
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Students API")
-                .description("API to manage students")
-                .version("0.0.1-SNAPSHOT")
+                .title("BugTracking API")
+                .description("API to manage bug tracking")
+                .version("1.0")
                 .build();
     }
 }

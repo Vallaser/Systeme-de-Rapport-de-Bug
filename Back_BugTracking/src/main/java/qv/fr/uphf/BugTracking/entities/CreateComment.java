@@ -7,6 +7,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * CreateComment est la classe permettant de créer une entity de la classe Comment
+ * 
+ * @author Quentin Colras
+ * @param comment Le contenu du commentaire
+ * @param dateComment La date de creation ou de modification du commentaire
+ * @param bug_id L'identifiant du bug auquel appartient le commentaire
+ * @param developer_id L'identifiant du developpeur qui a poste le commentaire
+ *
+ */
+
 @Getter
 @Setter
 @NoArgsConstructor

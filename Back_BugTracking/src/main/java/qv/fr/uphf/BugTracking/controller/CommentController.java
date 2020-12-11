@@ -22,6 +22,11 @@ import qv.fr.uphf.BugTracking.repositories.BugRepository;
 import qv.fr.uphf.BugTracking.repositories.CommentRepository;
 import qv.fr.uphf.BugTracking.repositories.DeveloperRepository;
 
+/**
+ * CommentController la classe pour les methodes REST de l'entity Comment
+ * @author Quentin Colras
+ */
+
 @RestController
 public class CommentController {
 
@@ -32,72 +37,90 @@ public class CommentController {
 	@Autowired
 	DeveloperRepository developersRepository;
 	
+	
+	/**
+	 * La fonction permettant de recuperer la liste des commentaires
+	 * @return La liste des commentaires present dans la base de donnees H2
+	 */
 	@GetMapping("comments")
-	public List<Comment> getComments()
-	{
-		return commentsRepository.findAll();
-	}
+		public List<Comment> getComments() {
+			return commentsRepository.findAll();
+		}
 	
+	/**
+	 * La fonction permettant de recuperer un commentaire specifique par son id
+	 * @param id L'id du commentaire qu'on doit retourner
+	 * @return Le commentaire ayant pour id_comment id
+	 */
 	@GetMapping("comments/{id}")
-    public Comment getComment(@PathVariable("id") Integer id) {
-        return commentsRepository.findById(id).orElse(null);
-    }
+	    public Comment getComment(@PathVariable("id") Integer id) {
+	        return commentsRepository.findById(id).orElse(null);
+	    }
 	
+	/**
+	  * La fonction permettant de creer un nouveau commentaire dans la BDD
+	  * @param comment Le nouveau commentaire a inserer, de type CreateComment
+	  * @return L'entity Comment construit a partir du comment passe en parametre
+	  */
 	@PostMapping("comments")
-    public Comment createComment(@Validated @RequestBody CreateComment comment) { 
-        return commentsRepository.save(
-            Comment
-            .builder()
-            .comment(comment.getComment())
-            .dateComment(comment.getDateComment())
-            .bug(bugsRepository.findById(comment.getBug_id()).get())
-            .developer(developersRepository.findById(comment.getDeveloper_id()).get())
-            .build()
-        );
-    }
- 
+	    public Comment createComment(@Validated @RequestBody CreateComment comment) { 
+	        return commentsRepository.save(
+	            Comment
+	            .builder()
+	            .comment(comment.getComment())
+	            .dateComment(comment.getDateComment())
+	            .bug(bugsRepository.findById(comment.getBug_id()).get())
+	            .developer(developersRepository.findById(comment.getDeveloper_id()).get())
+	            .build()
+	        );
+	    }
+	
+	/**
+	  * La fonction permettant de supprimer un commentaire dans la BDD
+	  * @param id L'id du commentaire que l'on doit supprimer
+	  * @return Une reponse si c'est la suppression a fonctionne ou non
+	  */
 	@DeleteMapping("comments/{id}")
-    public ResponseEntity<?> deleteComment(@PathVariable("id") Integer id) {
-        if(!commentsRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Bug not found with id " + id);
-        }
-
-        return commentsRepository.findById(id)
-                .map(bug -> {
-                	commentsRepository.delete(bug);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
-
-    }
+	    public ResponseEntity<?> deleteComment(@PathVariable("id") Integer id) {
+	        return commentsRepository.findById(id)
+	                .map(bug -> {
+	                	commentsRepository.delete(bug);
+	                    return ResponseEntity.ok().build();
+	                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
 	
+	    }
+	
+	/**
+	  * La fonction permettant de modifier le contenu d'un commentaire dans la BDD
+	  * @param id L'id du commentaire que l'on doit modifier
+	  * @param com Le nouveeau contenu a attribuer au commentaire
+	  * @return Une reponse si la modification a fonctionne ou non
+	  */
 	@PutMapping("comments/{id}/comment={comment}")
-	public ResponseEntity<?> updateCommentComment(@PathVariable("id") Integer id, @PathVariable("comment") String com)
-	{
-		if(!commentsRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Bug not found with id " + id);
-        }
-
-        return commentsRepository.findById(id)
-                .map(comment -> {
-                	comment.setComment(com);
-                		commentsRepository.save(comment);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
-	}
+		public ResponseEntity<?> updateCommentComment(@PathVariable("id") Integer id, @PathVariable("comment") String com) {
+	        return commentsRepository.findById(id)
+	                .map(comment -> {
+	                	comment.setComment(com);
+	                		commentsRepository.save(comment);
+	                    return ResponseEntity.ok().build();
+	                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
+		}
 	
+	/**
+	  * La fonction permettant de modifier la date d'un commentaire dans la BDD
+	  * @param id L'id du commentaire que l'on doit modifier
+	  * @param datecomment La nouvelle date a attribuer au commentaire
+	  * @return Une reponse si la modification a fonctionne ou non
+	  */
 	@PutMapping("comments/{id}/datecomment={datecomment}")
-	public ResponseEntity<?> updateCommentDateComment(@PathVariable("id") Integer id, @PathVariable("datecomment") @DateTimeFormat(pattern="yyyy-MM-dd") Date datecomment)
-	{
-		if(!commentsRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Bug not found with id " + id);
-        }
-
-        return commentsRepository.findById(id)
-                .map(comment -> {
-                	comment.setDateComment(datecomment);
-                		commentsRepository.save(comment);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
-	}
+		public ResponseEntity<?> updateCommentDateComment(@PathVariable("id") Integer id, @PathVariable("datecomment") 
+			@DateTimeFormat(pattern="yyyy-MM-dd") Date datecomment) {
+				return commentsRepository.findById(id)
+		                .map(comment -> {
+		                	comment.setDateComment(datecomment);
+		                		commentsRepository.save(comment);
+		                    return ResponseEntity.ok().build();
+		                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
+			}
 	
 }
