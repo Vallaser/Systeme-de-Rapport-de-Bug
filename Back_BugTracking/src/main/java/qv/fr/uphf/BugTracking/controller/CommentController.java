@@ -70,7 +70,7 @@ public class CommentController {
 
     }
 	
-	@PutMapping("comments/{id}/comment=/{comment}")
+	@PutMapping("comments/{id}/comment={comment}")
 	public ResponseEntity<?> updateCommentComment(@PathVariable("id") Integer id, @PathVariable("comment") String com)
 	{
 		if(!commentsRepository.existsById(id)) {
@@ -85,7 +85,7 @@ public class CommentController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
 	}
 	
-	@PutMapping("comments/{id}/datecomment=/{datecomment}")
+	@PutMapping("comments/{id}/datecomment={datecomment}")
 	public ResponseEntity<?> updateCommentDateComment(@PathVariable("id") Integer id, @PathVariable("datecomment") @DateTimeFormat(pattern="yyyy-MM-dd") Date datecomment)
 	{
 		if(!commentsRepository.existsById(id)) {

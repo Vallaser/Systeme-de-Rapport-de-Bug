@@ -2,7 +2,9 @@ package qv.fr.uphf.BugTracking.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +36,7 @@ public class Developer {
 	@JsonManagedReference
 	private List<Bug> bugs; //Liste des bugs affecter au developer/
 	
-	@OneToMany(mappedBy = "developer")
+	@OneToMany(mappedBy = "developer", cascade = {CascadeType.REMOVE})
 	@JsonIgnore
 	//@JsonManagedReference
 	private List<Comment> comments; //Liste des bugs affecter au developer/

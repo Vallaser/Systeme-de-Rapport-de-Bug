@@ -40,13 +40,13 @@ public class BugController {
         return bugsRepository.findById(id).orElse(null);
     }
 	
-	@GetMapping("bugs2/{etat}")
+	@GetMapping("bugs/etat/{etat}")
 	public List<Bug> getBugsEtat(@PathVariable("etat") String etat)
 	{
 		return bugsRepository.findByEtat(etat);
 	}
 	
-	@GetMapping("bugsdev/{id}")
+	@GetMapping("bugs/dev/{id}")
 	public Developer getBugDev(@PathVariable("id") Integer id) {
 		Optional<Bug> bugOpt = bugsRepository.findById(id);
 		if(bugOpt.isPresent())
@@ -98,53 +98,16 @@ public class BugController {
 
         return bugsRepository.findById(id)
                 .map(bug -> {
+                	
                 	bugsRepository.delete(bug);
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
 
     }
 	
-	/*@PutMapping("bugs/{id}/{title}")
-	public ResponseEntity<?> updateBugTitle(@PathVariable("id") Integer id, @PathVariable("title") String title)
-	{
-		if(!bugsRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Bug not found with id " + id);
-        }
-
-        return bugsRepository.findById(id)
-                .map(bug -> {
-                	bugsRepository.setBugTitleById(title, id);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
-	}*/
 	
-	@PutMapping("bugs/{id}")
-	public void updateBug(@RequestBody Bug nbug, @PathVariable Integer id)
-	{
-		bugsRepository.findById(id)
-			.map(bug -> {
-	    		bug.setTitle(nbug.getTitle());
-	    	bugsRepository.save(bug);
-	        return ResponseEntity.ok().build();
-	    });
-	}
 	
-	@PutMapping("bugs/{id}/{title}")
-	public ResponseEntity<?> updateBugTitle1(@PathVariable("id") Integer id, @PathVariable("title") String title)
-	{
-		if(!bugsRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Bug not found with id " + id);
-        }
-
-        return bugsRepository.findById(id)
-                .map(bug -> {
-                		bug.setTitle(title);
-                	bugsRepository.save(bug);
-                    return ResponseEntity.ok().build();
-                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
-	}
-	
-	@PutMapping("bugs/{id}/titre=/{title}")
+	@PutMapping("bugs/{id}/title={title}")
 	public ResponseEntity<?> updateBugTitle(@PathVariable("id") Integer id, @PathVariable("title") String title)
 	{
 		if(!bugsRepository.existsById(id)) {
@@ -159,7 +122,7 @@ public class BugController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
 	}
 	
-	@PutMapping("bugs/{id}/description=/{description}")
+	@PutMapping("bugs/{id}/description={description}")
 	public ResponseEntity<?> updateBugDescription(@PathVariable("id") Integer id, @PathVariable("description") String description)
 	{
 		if(!bugsRepository.existsById(id)) {
@@ -174,7 +137,7 @@ public class BugController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
 	}
 	
-	@PutMapping("bugs/{id}/priority=/{priority}")
+	@PutMapping("bugs/{id}/priority={priority}")
 	public ResponseEntity<?> updateBugPriority(@PathVariable("id") Integer id, @PathVariable("priority") String priority)
 	{
 		if(!bugsRepository.existsById(id)) {
@@ -189,7 +152,7 @@ public class BugController {
                 }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
 	}
 	
-	@PutMapping("bugs/{id}/etat=/{etat}")
+	@PutMapping("bugs/{id}/etat={etat}")
 	public ResponseEntity<?> updateBugEtat(@PathVariable("id") Integer id, @PathVariable("etat") String etat)
 	{
 		if(!bugsRepository.existsById(id)) {
@@ -214,6 +177,46 @@ public class BugController {
         return bugsRepository.findById(id)
                 .map(bug -> {
                 		bug.setId_developer(developer);
+                	bugsRepository.save(bug);
+                    return ResponseEntity.ok().build();
+                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
+	}*/
+	
+	/*@PutMapping("bugs/{id}/{title}")
+	public ResponseEntity<?> updateBugTitle(@PathVariable("id") Integer id, @PathVariable("title") String title)
+	{
+		if(!bugsRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Bug not found with id " + id);
+        }
+
+        return bugsRepository.findById(id)
+                .map(bug -> {
+                	bugsRepository.setBugTitleById(title, id);
+                    return ResponseEntity.ok().build();
+                }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));
+	}*/
+	
+	/*@PutMapping("bug/{id}")
+	public void updateBug(@RequestBody Bug nbug, @PathVariable Integer id)
+	{
+		bugsRepository.findById(id)
+			.map(bug -> {
+	    		bug.setTitle(nbug.getTitle());
+	    	bugsRepository.save(bug);
+	        return ResponseEntity.ok().build();
+	    });
+	}*/
+	
+	/*@PutMapping("bugs/{id}/{title}")
+	public ResponseEntity<?> updateBugTitle1(@PathVariable("id") Integer id, @PathVariable("title") String title)
+	{
+		if(!bugsRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Bug not found with id " + id);
+        }
+
+        return bugsRepository.findById(id)
+                .map(bug -> {
+                		bug.setTitle(title);
                 	bugsRepository.save(bug);
                     return ResponseEntity.ok().build();
                 }).orElseThrow(() -> new ResourceNotFoundException("Bug not found with id " + id));

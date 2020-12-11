@@ -3,6 +3,7 @@ package qv.fr.uphf.BugTracking.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * Bug est la classe représentant un bug
+ * 
+ * @author Quentin Colras
+ * @param id_bug L'identifiant unique du bug
+ * @param title Le titre du bug
+ * @param description La description générale du bug
+ * @param priority La priorité du bug : [HAUTE, MOYENNE, BASSE]
+ * @param etat L'état d'avancement du bug : [TO_DO, IN_PROGRESS, DONE]
+ * @param dateCreation La date de création du bug
+ * @param developer Le developer auquel est assigné le bug
+ * @param comments Liste des commentaires du bug
+ *
+ */
+
 @Getter //Lombok
 @Setter
 @NoArgsConstructor
@@ -31,6 +48,7 @@ import lombok.Setter;
 
 @Entity //JPA
 public class Bug {
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_bug;
 	private String title;
@@ -43,12 +61,13 @@ public class Bug {
 	
 	@ManyToOne
 	@JsonBackReference
-	@JoinColumn(name = "id_developer")
+	@JoinColumn(name = "id_developer", nullable = true)
 	private Developer developer;
 	
-	@OneToMany(mappedBy = "bug")
+	@OneToMany(mappedBy = "bug" , cascade = {CascadeType.REMOVE})
 	@JsonManagedReference
 	private List<Comment> comments; //Liste des commentaires du bug*/
+	
 	
 	public Developer getDeveloper()
 	{
