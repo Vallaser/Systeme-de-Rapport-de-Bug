@@ -1,8 +1,12 @@
 package qv.fr.uphf.BugTracking.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +54,29 @@ public class DeveloperController {
 	 	public Developer getDeveloper(@PathVariable("id") Integer id) {
 		 	return developersRepository.findById(id).orElse(null);
 	 	}
+	 
+	 /**
+		 * La fonction permettant de recuperer la liste des bugs d'un developpeur specifique par son id entre deux dates
+		 * @param id L'id du developpeur qu'on doit retourner
+		 * @param datemin La date minimale
+		 * @param datemax La date maximale
+		 * @return La liste des bugs ayant pour id_developer id et comprise entre datemin et datemax
+		 */
+		 @GetMapping("developersFiltre/{id}/{datemin}/{datemax}")
+		 	public List<Bug> getDeveloperFiltre(@PathVariable("id") Integer id, @PathVariable("datemin") 
+		 	@DateTimeFormat(pattern="yyyy-MM-dd")Date datemin,
+		 	@PathVariable("datemax") @DateTimeFormat(pattern="yyyy-MM-dd") Date datemax) {
+			 	Optional<Developer> devOpt = developersRepository.findById(id);
+			 	if(devOpt.isPresent())
+			 	{
+			 		List<Bug> listeBugFiltre = new ArrayList<Bug>();
+			 		for(Bug bug : devOpt.get().getBugs())
+			 			if(datemax.after(bug.getDateCreation()) && datemin.before(bug.getDateCreation()))
+			 				listeBugFiltre.add(bug);
+			 		return listeBugFiltre;
+			 	}
+			 	return null;
+		 	}
 	 
 	 /**
 	  * La fonction permettant de creer un nouveau developpeur dans la BDD

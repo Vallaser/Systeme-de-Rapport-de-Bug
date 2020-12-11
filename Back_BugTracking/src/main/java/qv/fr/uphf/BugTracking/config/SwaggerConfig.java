@@ -35,7 +35,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("BugTracking API")
                 .description("API to manage bug tracking")
-                .version("1.0")
+                .version("1.1")
                 .build();
     }
 }

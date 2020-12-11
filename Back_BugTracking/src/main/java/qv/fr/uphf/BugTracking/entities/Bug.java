@@ -56,7 +56,7 @@ public class Bug {
 	private String priority;
 	private String etat;
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(pattern = "YYYY:MM:dd")
+	@JsonFormat(pattern = "YYYY:MM:dd HH:mm:ss")
 	private Date dateCreation;
 	
 	@ManyToOne

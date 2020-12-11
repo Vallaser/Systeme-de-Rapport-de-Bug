@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import qv.fr.uphf.BugTracking.entities.Bug;
+import qv.fr.uphf.BugTracking.entities.Comment;
 import qv.fr.uphf.BugTracking.entities.CreateBug;
 import qv.fr.uphf.BugTracking.entities.Developer;
 import qv.fr.uphf.BugTracking.exception.ResourceNotFoundException;
@@ -56,6 +57,18 @@ public class BugController {
 	    }
 	
 	/**
+	 * La fonction permettant de recuperer une liste contenant le bug specifique par son id
+	 * @param id L'id du bug qu'on doit retourner
+	 * @return Le bug ayant pour id_bug id
+	 */
+	@GetMapping("bugstab/{id}")
+	    public List<Bug> getBugTab(@PathVariable("id") Integer id) {
+			List<Bug> listeBug = new ArrayList<Bug>();
+			listeBug.add(bugsRepository.findById(id).orElse(null));
+	        return listeBug;
+	    }
+	
+	/**
 	 * La fonction permettant de recuperer la liste des bugs par leurs etats
 	 * @param etat L'etat d'avancement du bug qu'on doit retourner
 	 * @return Le bug ayant pour etat = etat
@@ -90,6 +103,36 @@ public class BugController {
 		ArrayList<Bug> listeBug = new ArrayList<Bug>(bugsRepository.findByEtat(etat));
 		if(index < listeBug.size())
 			return (Integer)listeBug.get(index).getId_bug();
+		return null;
+	}
+	
+	/**
+	 * La fonction permettant de recuperer la liste des commentaires du bug avec l'id_bug = id
+	 * @param id L'identifiant du bug
+	 * @return La liste des commentaires du bug
+	 */
+	@GetMapping("bugscomments/{id}")
+	public List<Comment> getCommentsByBug(@PathVariable("id") Integer id) {
+		Optional<Bug> bugOpt = bugsRepository.findById(id);
+		if(bugOpt.isPresent())
+			return bugOpt.get().getComments();
+		return null;
+	}
+	
+	/**
+	 * La fonction permettant de recuperer la liste avec le developer du bug avec l'id_bug = id
+	 * @param id L'identifiant du bug
+	 * @return La liste avec le developer du bug
+	 */
+	@GetMapping("bugsdeveloper/{id}")
+	public List<Developer> getDeveloperByBug(@PathVariable("id") Integer id) {
+		Optional<Bug> bugOpt = bugsRepository.findById(id);
+		if(bugOpt.isPresent())
+		{
+			List<Developer> listeDev = new ArrayList<Developer>();
+			listeDev.add(bugOpt.get().getDeveloper());
+			return listeDev;
+		}
 		return null;
 	}
 	

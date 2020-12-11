@@ -1,7 +1,9 @@
 package qv.fr.uphf.BugTracking.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import qv.fr.uphf.BugTracking.entities.Comment;
 import qv.fr.uphf.BugTracking.entities.CreateComment;
+import qv.fr.uphf.BugTracking.entities.Developer;
 import qv.fr.uphf.BugTracking.exception.ResourceNotFoundException;
 import qv.fr.uphf.BugTracking.repositories.BugRepository;
 import qv.fr.uphf.BugTracking.repositories.CommentRepository;
@@ -55,6 +58,20 @@ public class CommentController {
 	@GetMapping("comments/{id}")
 	    public Comment getComment(@PathVariable("id") Integer id) {
 	        return commentsRepository.findById(id).orElse(null);
+	    }
+	
+	/**
+	 * La fonction permettant de recuperer le developppeur qui a ecrit le commentaire specifique par son id
+	 * @param id L'id du commentaire
+	 * @return Le developpeur qui a ecrit le commentaire sous la forme d'une liste
+	 */
+	@GetMapping("commentsDev/{id}")
+	    public List<Developer> getDevByCommentId(@PathVariable("id") Integer id) {
+			List<Developer> listeDeveloper = new ArrayList<Developer>();
+			Optional<Comment> commentOpt = commentsRepository.findById(id);
+			if(commentOpt.isPresent())
+				listeDeveloper.add(commentOpt.get().getDeveloper());
+	        return listeDeveloper;
 	    }
 	
 	/**
@@ -114,7 +131,7 @@ public class CommentController {
 	  */
 	@PutMapping("comments/{id}/datecomment={datecomment}")
 		public ResponseEntity<?> updateCommentDateComment(@PathVariable("id") Integer id, @PathVariable("datecomment") 
-			@DateTimeFormat(pattern="yyyy-MM-dd") Date datecomment) {
+			@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date datecomment) {
 				return commentsRepository.findById(id)
 		                .map(comment -> {
 		                	comment.setDateComment(datecomment);
