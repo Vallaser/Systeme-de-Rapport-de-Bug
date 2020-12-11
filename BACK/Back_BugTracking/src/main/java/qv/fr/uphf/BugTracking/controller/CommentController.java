@@ -1,7 +1,9 @@
 package qv.fr.uphf.BugTracking.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import qv.fr.uphf.BugTracking.entities.Comment;
 import qv.fr.uphf.BugTracking.entities.CreateComment;
+import qv.fr.uphf.BugTracking.entities.Developer;
 import qv.fr.uphf.BugTracking.exception.ResourceNotFoundException;
 import qv.fr.uphf.BugTracking.repositories.BugRepository;
 import qv.fr.uphf.BugTracking.repositories.CommentRepository;
@@ -42,6 +45,17 @@ public class CommentController {
     public Comment getComment(@PathVariable("id") Integer id) {
         return commentsRepository.findById(id).orElse(null);
     }
+	
+	@GetMapping("commentsDev/{id}")
+    public List<Developer> getDevByCommentId(@PathVariable("id") Integer id) {
+        List<Developer> listeDeveloper = new ArrayList<Developer>();
+        Optional<Comment> commentOpt = commentsRepository.findById(id);
+        if(commentOpt.isPresent())
+            listeDeveloper.add(commentOpt.get().getDeveloper());
+        return listeDeveloper;
+    }
+
+	
 	
 	@PostMapping("comments")
     public Comment createComment(@Validated @RequestBody CreateComment comment) { 

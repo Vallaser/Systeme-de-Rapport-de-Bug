@@ -94,13 +94,25 @@ export class SharedService {
     return this.http.post(this.APIUrl + '/comments', val);
   }
 
+  updateCommentComment(val: any) {
+    return this.http.put(this.APIUrl + '/comments/' + val.id_comment + '/comment=' + val.comment, val);
+  }
+
+  updateDateComment(val: any) {
+    return this.http.put(this.APIUrl + '/bugs/' + val.date_comment + '/datecomment=' + val.date_comment, val);
+  }
+
 
   deleteComment(val: any) {
-    return this.http.delete(this.APIUrl + '/comments', val);
+    return this.http.delete(this.APIUrl + '/comments/'+val.id_comment, val);
   }
 
   getDevelopers(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/developers');
+  }
+
+  getDevByCommentId(id: number): Observable<any[]> {
+    return this.http.get<any>(this.APIUrl + '/commentsDev/'+id);
   }
 
 

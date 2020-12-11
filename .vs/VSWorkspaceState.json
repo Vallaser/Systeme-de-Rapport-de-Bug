@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\BACK\\Back_BugTracking",
     "\\FRONT",
     "\\FRONT\\src",
     "\\FRONT\\src\\app",
     "\\FRONT\\src\\app\\bug-detail",
-    "\\FRONT\\src\\app\\developer-list",
-    "\\FRONT\\src\\app\\developer-list\\add-edit-dev",
-    "\\FRONT\\src\\app\\developer-list\\show-dev",
+    "\\FRONT\\src\\app\\bug-detail\\edit-bug",
+    "\\FRONT\\src\\app\\bug-detail\\edit-comment",
+    "\\FRONT\\src\\app\\bug-detail\\show-bug",
+    "\\FRONT\\src\\app\\bug-list",
     "\\FRONT\\src\\environments"
   ],
-  "SelectedNode": "\\FRONT\\src\\app\\developer-list\\show-dev\\show-dev.component.ts",
+  "SelectedNode": "\\FRONT\\src\\app\\bug-detail\\show-bug\\show-bug.component.html",
   "PreviewInSolutionExplorer": false
 }

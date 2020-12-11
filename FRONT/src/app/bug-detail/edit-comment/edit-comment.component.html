@@ -1,0 +1,12 @@
+
+<div class="form-froup row" *ngIf="comment.id_comment!=0">
+  <label class="col-sm-3 col-form-label">Comment</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="comment_text" placeholder="Enter Comment" />
+  </div>
+</div>
+
+
+<button (click)="updateComment()" *ngIf="comment.id_comment!=0" class="btn btn-primary">
+  Update
+</button>

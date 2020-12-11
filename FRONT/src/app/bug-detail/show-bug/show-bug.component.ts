@@ -13,12 +13,14 @@ import { SharedService } from 'src/app/shared.service';
 export class ShowBugComponent implements OnInit {
 
   bugs: any;
-  dev: any;
+  devs: any;
   comments: any;
   bug: any;
+  comment: any;
 
   ModalTitle: string = "";
   ActivateEditBugComp: boolean = false;
+  ActivateEditCommentComp: boolean = false;
 
   private subscription: Subscription = new Subscription();
 
@@ -30,7 +32,7 @@ export class ShowBugComponent implements OnInit {
     );
 
     this.bugs = this.service.getBugTab(this.id);
-    this.dev = this.service.getDeveloperByBug(this.id);
+    this.devs = this.service.getDeveloperByBug(this.id);
     this.comments = this.service.getCommentsByBug(this.id);
     this.ActivateEditBugComp = false;
   }
@@ -40,26 +42,57 @@ export class ShowBugComponent implements OnInit {
 
   }
 
-  editClick(item: any) {
-    this.bug = item;
+  editBugClick(bug: any) {
+    this.bug = bug;
     this.ModalTitle = "Edit Bug";
     this.ActivateEditBugComp = true;
   }
 
-  deleteClick(item: any) {
+  deleteBugClick(bug: any) {
     if (confirm('Are you sure ?')) {
-      this.service.deleteBug(item.id_bug).subscribe(data => {
+      this.service.deleteBug(bug.id_bug).subscribe();
+    }
+  }
+
+
+  closeBugClick() {
+    this.ActivateEditBugComp = false;
+    this.bugs = this.service.getBugTab(this.id);
+    this.devs = this.service.getDeveloperByBug(this.id);
+    this.comments = this.service.getCommentsByBug(this.id);
+  }
+
+  /*
+  devcomments: any;
+
+  anyfunction(comment: any) {
+    console.log(comment.id_developer);
+    this.devcomments = this.service.getDevByCommentId(comment.id);
+  }*/
+
+
+
+  editCommentClick(comment: any) {
+    this.comment = comment;
+    this.ModalTitle = "Edit Comment";
+    this.ActivateEditCommentComp = true;
+  }
+
+
+  deleteCommentClick(comment: any) {
+    if (confirm('Are you sure ?')) {
+      this.service.deleteComment(comment).subscribe(data => {
         this.router.navigateByUrl('');
       });
     }
   }
 
-
-  closeClick() {
-    this.ActivateEditBugComp = false;
+  closeCommentClick() {
+    this.ActivateEditCommentComp = false;
     this.bugs = this.service.getBugTab(this.id);
-    this.dev = this.service.getDeveloperByBug(this.id);
+    this.devs = this.service.getDeveloperByBug(this.id);
     this.comments = this.service.getCommentsByBug(this.id);
   }
+
 
 }
