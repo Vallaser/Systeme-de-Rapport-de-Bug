@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShowDevComponent } from './developer-list/show-dev/show-dev.component';
 import { AddEditDevComponent } from './developer-list/add-edit-dev/add-edit-dev.component';
 import { BugDetailComponent } from './bug-detail/bug-detail.component';
+import { EditBugComponent } from './bug-detail/edit-bug/edit-bug.component';
+import { ShowBugComponent } from './bug-detail/show-bug/show-bug.component';
 
 
 
@@ -29,7 +31,9 @@ import { BugDetailComponent } from './bug-detail/bug-detail.component';
     DeveloperListComponent,
     ShowDevComponent,
     AddEditDevComponent,
-    BugDetailComponent
+    BugDetailComponent,
+    EditBugComponent,
+    ShowBugComponent
   ],
   exports: [
     AppComponent

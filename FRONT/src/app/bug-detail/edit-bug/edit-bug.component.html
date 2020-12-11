@@ -1,0 +1,31 @@
+
+<div class="form-froup row" *ngIf="bug.id_bug!=0">
+
+
+  <label class="col-sm-3 col-form-label">Bug Title</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter Bug Title" />
+  </div>
+
+  <label class="col-sm-3 col-form-label">Bug Description</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="description" placeholder="Enter Bug Description" />
+  </div>
+
+  <label class="col-sm-3 col-form-label">Bug Priorite</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="priority" placeholder="Enter Bug Priorite" />
+  </div>
+
+  <label class="col-sm-3 col-form-label">Bug Etat</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="etat" placeholder="Enter Bug Etat" />
+  </div>
+
+</div>
+
+
+<button (click)="updateBug()" *ngIf="bug.id_bug!=0" class="btn btn-primary">
+  Update
+</button>
+

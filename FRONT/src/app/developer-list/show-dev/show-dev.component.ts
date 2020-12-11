@@ -38,7 +38,7 @@ export class ShowDevComponent implements OnInit {
 
   editClick(item:any) {
     this.dev = item;
-    this.ModalTitle = "Edit Department";
+    this.ModalTitle = "Edit Developer";
     this.ActivateAddEditDevComp = true;
   }
 

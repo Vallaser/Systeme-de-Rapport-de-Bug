@@ -1,21 +1,30 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary float-right m-2"
-data-toggle="modal" data-target="#exampleModal"
-(click)="addClick()"
-data-backdrop="static" data-keyboard="false"
->
-  Add Developer
-</button>
+<table>
+  <tr>
+    <td>
+      <button class="btn btn-primary" routerLink="">View Bugs</button>
+    </td>
+    <td>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary float-right m-2"
+              data-toggle="modal" data-target="#exampleModal"
+              (click)="addClick()"
+              data-backdrop="static" data-keyboard="false">
+        Add Developer
+      </button>
+    </td>
+  </tr>
+</table>
+
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="ActivateAddEditDevComp">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
         <button type="button" class="close"
-        data-dismiss="modal" aria-label="Close"
-        (click)="closeClick()">
+                data-dismiss="modal" aria-label="Close"
+                (click)="closeClick()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

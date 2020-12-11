@@ -1,15 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\BACK\\Back_BugTracking",
     "\\FRONT",
-    "\\FRONT\\e2e",
     "\\FRONT\\src",
     "\\FRONT\\src\\app",
-    "\\FRONT\\src\\app\\bug-list",
+    "\\FRONT\\src\\app\\bug-detail",
     "\\FRONT\\src\\app\\developer-list",
-    "\\FRONT\\src\\app\\menu",
+    "\\FRONT\\src\\app\\developer-list\\add-edit-dev",
+    "\\FRONT\\src\\app\\developer-list\\show-dev",
     "\\FRONT\\src\\environments"
   ],
-  "SelectedNode": "\\FRONT\\src\\app\\shared.service.ts",
+  "SelectedNode": "\\FRONT\\src\\app\\developer-list\\show-dev\\show-dev.component.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -1,7 +1,7 @@
 <table>
   <tr>
     <td>
-      <button class="btn btn-primary" routerLink="developer">Developers</button>
+      <button class="btn btn-primary" routerLink="developer">View Developers</button>
     </td>
     <td>
       <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
@@ -21,13 +21,19 @@
         {{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.id_developer | json}}
         <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
-                 routerLink="['bug', item.id_bug]"
+                (click)="navigate(item.id_bug)"
                 data-backdrop="static" data-keyboard="false">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
             <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
           </svg>
-          </button>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                (click)="deleteClick(item)">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -42,13 +48,19 @@
         {{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.id_developer | json}}
         <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
-                 routerLink="['bug', item.id_bug]"
+                (click)="navigate(item.id_bug)"
                 data-backdrop="static" data-keyboard="false">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
             <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
           </svg>
-          </button>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                (click)="deleteClick(item)">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -61,17 +73,23 @@
          class="example-list"
          (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of bugsDONE | filter:searchText | async" cdkDrag>
-        {{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.id_developer | json}}
+        {{item.title | json}} {{item.description | json}} {{item.dateCreation | json}} {{item.developer | json}}
         <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
-                 routerLink="['bug', item.id_bug]"
+                (click)="navigate(item.id_bug)"
                 data-backdrop="static" data-keyboard="false">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
             <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
           </svg>
-          </button>
-</div>
+        </button>
+        <button type="button" class="btn btn-light mr-1"
+                (click)="deleteClick(item)">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -79,5 +97,8 @@
 
 
 
-
+<div class="example-box" cdkDrag>
+  {{bugsTEST}}
+ 
+  </div>
 

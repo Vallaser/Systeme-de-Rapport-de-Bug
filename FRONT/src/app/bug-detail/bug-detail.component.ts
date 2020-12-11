@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bug-detail.component.css']
 })
 export class BugDetailComponent implements OnInit {
+  
+ 
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit(): void {
   }
+    
+  ngOnInit(): void {
 
+
+  }
 }
+

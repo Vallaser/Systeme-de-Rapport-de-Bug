@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/shared.service';
 
 
@@ -41,9 +41,12 @@ export class BugListComponent implements OnInit {
     });
   }
 
+    
 
+  navigate(id:number) {
+    this.router.navigate(['bug', id]);
 
-
+  }
 
 
 
@@ -99,8 +102,6 @@ export class BugListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
   /*
 
   todo = [
@@ -127,23 +128,93 @@ export class BugListComponent implements OnInit {
 
 
 
+  addBug(val:any) {
+    this.service.createBug(val).subscribe();
+  }
+
+  deleteClick(item: any) {
+    if (confirm('Are you sure ?')) {
+      this.service.deleteBug(item.id_bug).subscribe(data => {
+        this.bugsTODO = this.service.getBugsEtatTODO();
+        this.bugsINPROGRESS = this.service.getBugsEtatINPROGRESS();
+        this.bugsDONE = this.service.getBugsEtatDONE();
+      });
+    }
+  }
+
+  updateBugEtat(val:any,id:number,etat:string) {
+    //this.service.updateBugEtat(val,id, etat).subscribe();
+    this.bugsTODO = this.service.getBugsEtatTODO();
+    this.bugsINPROGRESS = this.service.getBugsEtatINPROGRESS();
+    this.bugsDONE = this.service.getBugsEtatDONE();
+  }
 
 
+  /*getIdByBug(index: number, etat: string): number {
+    return this.service.getIdByBug(index,etat).subscribe();
+  }*/
 
 
-
-
+  bugsTEST: any;
 
 
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
+      //moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    }
+    else {
+      if (event.previousContainer.id == "cdk-drop-list-0" && event.container.id == "cdk-drop-list-1") {
+        if (confirm(this.bugsTODO[event.previousIndex])) {
+          //this.bugsTODO[event.previousIndex];
+          //this.bugsTEST = this.service.getBugsEtatTODO();
+          //console.log(this.bugsTEST[1].title);
+          //this.bugsTEST = this.service.getBugsIndexAndEtatTODO(1);
+          //this.bugsTEST = this.bugsTEST.title;
+          //this.bugsTEST = this.service.getBugs();
+         
+
+          //this.updateBugEtat(this.service.getBugsIndexAndEtatTODO(event.previousIndex),"IN_PROGRESS");
+
+          //this.addBug(this.service.getBugsIndexAndEtatTODO(event.previousIndex));
+
+          //this.deleteClick(this.service.getBugsIndexAndEtatTODO(event.previousIndex));
+
+          //console.log(this.getIdByBug(event.previousIndex, "TO_DO"));
+          
+          //this.updateBugEtat(this.service.getBugsIndexAndEtatTODO(event.previousIndex),this.getIdByBug(event.previousIndex, "TO_DO"), "IN_PROGRESS");
+          //console.log(this.service.getBugs());
+        }
+      }
+      else if (event.previousContainer.id == "cdk-drop-list-0" && event.container.id == "cdk-drop-list-2") {
+        if (confirm(event.previousContainer.id)) {
+
+        }
+      }
+      else if (event.previousContainer.id == "cdk-drop-list-1" && event.container.id == "cdk-drop-list-0") {
+        if (confirm(event.previousContainer.id)) {
+
+        }
+      }
+      else if (event.previousContainer.id == "cdk-drop-list-1" && event.container.id == "cdk-drop-list-2") {
+        if (confirm(event.previousContainer.id)) {
+
+        }
+      }
+      else if (event.previousContainer.id == "cdk-drop-list-2" && event.container.id == "cdk-drop-list-0") {
+        if (confirm(event.previousContainer.id)) {
+
+        }
+      }
+      else if (event.previousContainer.id == "cdk-drop-list-2" && event.container.id == "cdk-drop-list-1") {
+        if (confirm(event.previousContainer.id)) {
+
+        }
+      }
+      /*transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex);*/
     }
   }
 

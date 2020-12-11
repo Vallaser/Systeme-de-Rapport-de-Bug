@@ -19,6 +19,13 @@ import qv.fr.uphf.BugTracking.entities.Developer;
 import qv.fr.uphf.BugTracking.exception.ResourceNotFoundException;
 import qv.fr.uphf.BugTracking.repositories.DeveloperRepository;
 
+
+/**
+ * DeveloperController la classe
+ * @author Quentin Colras
+ *
+ */
+
 @RestController
 public class DeveloperController {
 	
@@ -63,8 +70,7 @@ public class DeveloperController {
 
 	    }
 	 
-	 
-	 @PutMapping("developers/{id}/avatar=/{avatar}")
+	 @PutMapping("developers/{id}/avatar={avatar}")
 		public ResponseEntity<?> updateDeveloperAvatar(@PathVariable("id") Integer id, @PathVariable("avatar") String avatar)
 		{
 			if(!developersRepository.existsById(id)) {
