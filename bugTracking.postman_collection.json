@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "7296734c-e796-4d79-b2ac-7864388998ac",
+		"name": "bugTracking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Function Developer",
+			"item": [
+				{
+					"name": "getDevelopers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8000/developers",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"developers"
+							]
+						},
+						"description": "Retourne l'ensemble des développeurs de la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "getDeveloper/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/developers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"developers",
+								"1"
+							]
+						},
+						"description": "Retourne le développeur avec l'id_developper = id de la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "getBugsFiltre/{datemin, datemax}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/developersFiltre/1/2020-05-01/2020-10-01",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"developersFiltre",
+								"1",
+								"2020-05-01",
+								"2020-10-01"
+							]
+						},
+						"description": "Retourne les bugs compris entre deux dates"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDeveloper/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/developers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"developers",
+								"1"
+							]
+						},
+						"description": "Supprime de la base de données le developer avec l'id_developer = id"
+					},
+					"response": []
+				},
+				{
+					"name": "addDeveloper",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:8000/developers",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"developers"
+							]
+						},
+						"description": "Ajout d'un developpeur dans la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "editDeveloper/{id}/{avatar}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/developers/1/avatar=je suis un avatar",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"developers",
+								"1",
+								"avatar=je suis un avatar"
+							]
+						},
+						"description": "Modifie l'avatar du developer avec l'id_developer = id"
+					},
+					"response": []
+				}
+			],
+			"description": "Regroupe toutes les requêtes liées à la classe Developer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0e1ba4e9-ff68-4c55-b9fa-3ce2db32ae1f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "12940633-ace7-4712-b514-a10c823a61fe",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Function Bug",
+			"item": [
+				{
+					"name": "getBugs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs"
+							]
+						},
+						"description": "Retourne l'ensemble des bugs de la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "getBug/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"1"
+							]
+						},
+						"description": "Retourne le bug avec l'id_bug = id de la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "getBugsEtat/{etat}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/etat/DONE",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"etat",
+								"DONE"
+							]
+						},
+						"description": "Retourne l'ensemble des bugs de la base de données ayant pour état = etat"
+					},
+					"response": []
+				},
+				{
+					"name": "getBugsIndexAndEtat/{index, etat}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/0/etat/DONE",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"0",
+								"etat",
+								"DONE"
+							]
+						},
+						"description": "Retourne l'ensemble le index-ième element de la liste des bugs de la base de données ayant pour état = etat"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBug/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"1"
+							]
+						},
+						"description": "Supprime de la base de données le bug avec l'id_bug = id"
+					},
+					"response": []
+				},
+				{
+					"name": "addBug",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs"
+							]
+						},
+						"description": "Ajout d'un bug dans la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "editBug/{id}/{title}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/1/title=je suis un titre",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"1",
+								"title=je suis un titre"
+							]
+						},
+						"description": "Modifie le titre d'un bug avec l'id_bug = id"
+					},
+					"response": []
+				},
+				{
+					"name": "editBug/{id}/{description}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/1/description=je suis une description",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"1",
+								"description=je suis une description"
+							]
+						},
+						"description": "Modifie la description d'un bug avec l'id_bug = id"
+					},
+					"response": []
+				},
+				{
+					"name": "editBug/{id}/{priority}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/1/priority=je suis une prioritée",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"1",
+								"priority=je suis une prioritée"
+							]
+						},
+						"description": "Modifie la prioritée d'un bug avec l'id_bug = id"
+					},
+					"response": []
+				},
+				{
+					"name": "editBug/{id}/{etat}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bugs/1/etat=je suis un état",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bugs",
+								"1",
+								"etat=je suis un état"
+							]
+						},
+						"description": "Modifie l'état d'avancement d'un bug avec l'id_bug = id"
+					},
+					"response": []
+				}
+			],
+			"description": "Regroupe toutes les requêtes liées à la classe Bug",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Function Comment",
+			"item": [
+				{
+					"name": "getComments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments"
+							]
+						},
+						"description": "Retourne l'ensemble des commentaires de la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "getComment/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"1"
+							]
+						},
+						"description": "Retourne le commentaire avec l'id_comment = id de la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComment/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"1"
+							]
+						},
+						"description": "Supprime de la base de données le commentaire avec l'id_comment = id"
+					},
+					"response": []
+				},
+				{
+					"name": "addComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bug_id\": 1,\r\n    \"comment\": \"je suis un nouveau commentaire\",\r\n    \"dateComment\": \"2020-12-11\",\r\n    \"developer_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8000/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments"
+							]
+						},
+						"description": "Ajout d'un commentaire dans la base de données"
+					},
+					"response": []
+				},
+				{
+					"name": "editComment/{id}/{comment}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments/1/comment=je suis un comment",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"1",
+								"comment=je suis un comment"
+							]
+						},
+						"description": "Modifie le contenu du commentaire avec l'id_commentaire = id"
+					},
+					"response": []
+				},
+				{
+					"name": "editCommnent/{id}/{dateComment}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments/1/datecomment=2020-09-16",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"1",
+								"datecomment=2020-09-16"
+							]
+						},
+						"description": "Modifie la date du commentaire avec l'id_commentaire = id"
+					},
+					"response": []
+				}
+			],
+			"description": "Regroupe toutes les requêtes liées à la classe Comment",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
