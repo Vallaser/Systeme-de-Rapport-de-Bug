@@ -20,6 +20,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * Comment est la classe representant un commentaire
+ * 
+ * @author Quentin Colras
+ * @param id_coment L'identifiant unique du commentaire
+ * @param comment Le contenu du commentaire
+ * @param dateComment La date de creation ou de modification du commentaire
+ * @param bug Le bug auquel appartient le commentaire
+ * @param developer Le developpeur qui a poste le commentaire
+ *
+ */
+
 @Getter //Lombok
 @Setter
 @NoArgsConstructor

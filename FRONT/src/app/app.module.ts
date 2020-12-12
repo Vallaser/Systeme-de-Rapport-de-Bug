@@ -20,7 +20,8 @@ import { AddEditDevComponent } from './developer-list/add-edit-dev/add-edit-dev.
 import { BugDetailComponent } from './bug-detail/bug-detail.component';
 import { EditBugComponent } from './bug-detail/edit-bug/edit-bug.component';
 import { ShowBugComponent } from './bug-detail/show-bug/show-bug.component';
-import { EditCommentComponent } from './bug-detail/edit-comment/edit-comment.component';
+import { AddEditCommentComponent } from './bug-detail/add-edit-comment/add-edit-comment.component';
+import { AddBugComponent } from './bug-list/add-bug/add-bug.component';
 
 
 
@@ -35,7 +36,8 @@ import { EditCommentComponent } from './bug-detail/edit-comment/edit-comment.com
     BugDetailComponent,
     EditBugComponent,
     ShowBugComponent,
-    EditCommentComponent
+    AddEditCommentComponent,
+    AddBugComponent
   ],
   exports: [
     AppComponent

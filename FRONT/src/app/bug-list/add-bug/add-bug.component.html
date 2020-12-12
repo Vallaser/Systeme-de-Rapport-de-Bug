@@ -1,34 +1,27 @@
-<!--All Fields-->
-<div class="form-froup row" *ngIf="bug.id_bug!=0">
-
+<div class="form-froup row" *ngIf="id_bug==0">
   <!--Field Title-->
   <label class="col-sm-3 col-form-label">Bug Title</label>
   <div class="col-sm-7">
     <input type="text" class="form-control" [(ngModel)]="title" placeholder="Enter Bug Title" />
   </div>
-
   <!--Field Description-->
   <label class="col-sm-3 col-form-label">Bug Description</label>
   <div class="col-sm-7">
     <input type="text" class="form-control" [(ngModel)]="description" placeholder="Enter Bug Description" />
   </div>
-
-  <!--Field Priority-->
-  <label class="col-sm-3 col-form-label">Bug Priority</label>
-  <div class="col-sm-7">
-    <input type="text" class="form-control" [(ngModel)]="priority" placeholder="Enter Bug Priority" />
-  </div>
-
   <!--Field Etat-->
   <label class="col-sm-3 col-form-label">Bug Etat</label>
   <div class="col-sm-7">
     <input type="text" class="form-control" [(ngModel)]="etat" placeholder="Enter Bug Etat" />
   </div>
-
+  <!--Field Priority-->
+  <label class="col-sm-3 col-form-label">Bug Priority</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="priority" placeholder="Enter Bug Priority" />
+  </div>
 </div>
 
 <!--Button Add-->
-<button (click)="updateBug()" *ngIf="bug.id_bug!=0" class="btn btn-primary">
-  Update
+<button (click)="addBug()" *ngIf="id_bug==0" class="btn btn-primary">
+  Add
 </button>
-

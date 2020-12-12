@@ -24,7 +24,6 @@ export class AddEditDevComponent implements OnInit {
 
   addDeveloper() {
     var val = {
-      id_developer: this.id_developer,
       name: this.name,
       avatar: this.avatar
     };

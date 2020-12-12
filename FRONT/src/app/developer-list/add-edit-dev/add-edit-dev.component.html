@@ -1,5 +1,6 @@
+<!------------------------Part Add-------------------->
+<!--All Fields-->
 <div class="form-froup row" *ngIf="dev.id_developer==0">
-
 
   <label class="col-sm-3 col-form-label">Developer Name</label>
   <div class="col-sm-7">
@@ -12,13 +13,15 @@
   </div>
 </div>
 
-
+<!--Button Add-->
 <button (click)="addDeveloper()" *ngIf="dev.id_developer==0" class="btn btn-primary">
   Add
 </button>
 
 
 
+<!------------------------Part Update-------------------->
+<!--All Fields-->
 <div class="form-froup row" *ngIf="dev.id_developer!=0">
   <label class="col-sm-3 col-form-label">Developer Avatar</label>
   <div class="col-sm-7">
@@ -26,10 +29,7 @@
   </div>
 </div>
 
-
-
-
-
+<!--Button Update-->
 <button (click)="updateDeveloper()" *ngIf="dev.id_developer!=0" class="btn btn-primary">
   Update
 </button>

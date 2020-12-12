@@ -1,0 +1,28 @@
+<!-----------------------------Part Add-------------------------->
+<!--All Field-->
+<div class="form-froup row" *ngIf="comment.id_comment==0">
+  <label class="col-sm-3 col-form-label">Comment</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="comment_text" placeholder="Enter Comment" />
+  </div>
+</div>
+
+<!--Button Add-->
+<button (click)="addComment()" *ngIf="comment.id_comment==0" class="btn btn-primary">
+  Add
+</button>
+
+
+<!-----------------------------Part Update-------------------------->
+<!--All Field-->
+<div class="form-group row" *ngIf="comment.id_comment!=0">
+  <label class="col-sm-3 col-form-label" for="exampleFormControlTextarea1" rows="3">Comment</label>
+  <div class="col-sm-7">
+    <input type="text" class="form-control" [(ngModel)]="comment_text" placeholder="Enter Comment" />
+  </div>
+</div>
+
+<!--Button Update-->
+<button (click)="updateComment()" *ngIf="comment.id_comment!=0" class="btn btn-primary">
+  Update
+</button>

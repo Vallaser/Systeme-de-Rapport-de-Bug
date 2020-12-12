@@ -5,12 +5,12 @@
     "\\FRONT\\src",
     "\\FRONT\\src\\app",
     "\\FRONT\\src\\app\\bug-detail",
-    "\\FRONT\\src\\app\\bug-detail\\edit-bug",
-    "\\FRONT\\src\\app\\bug-detail\\edit-comment",
+    "\\FRONT\\src\\app\\bug-detail\\add-edit-comment",
     "\\FRONT\\src\\app\\bug-detail\\show-bug",
     "\\FRONT\\src\\app\\bug-list",
-    "\\FRONT\\src\\environments"
+    "\\FRONT\\src\\app\\bug-list\\add-bug",
+    "\\FRONT\\src\\app\\developer-list\\add-edit-dev"
   ],
-  "SelectedNode": "\\FRONT\\src\\app\\bug-detail\\show-bug\\show-bug.component.html",
+  "SelectedNode": "\\FRONT\\src\\app\\bug-list\\bug-list.component.ts",
   "PreviewInSolutionExplorer": false
 }

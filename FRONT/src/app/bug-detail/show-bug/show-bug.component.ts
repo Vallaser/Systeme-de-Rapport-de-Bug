@@ -20,20 +20,20 @@ export class ShowBugComponent implements OnInit {
 
   ModalTitle: string = "";
   ActivateEditBugComp: boolean = false;
-  ActivateEditCommentComp: boolean = false;
+  ActivateAddEditCommentComp: boolean = false;
 
   private subscription: Subscription = new Subscription();
 
-  id: number = 0;
+  id_bug: number = 0;
 
   constructor(private service: SharedService, private router: Router, activatedRoute: ActivatedRoute) {
     this.subscription = activatedRoute.params.subscribe(
-      (param: any) => this.id = param['id']
+      (param: any) => this.id_bug = param['id']
     );
 
-    this.bugs = this.service.getBugTab(this.id);
-    this.devs = this.service.getDeveloperByBug(this.id);
-    this.comments = this.service.getCommentsByBug(this.id);
+    this.bugs = this.service.getBugTab(this.id_bug);
+    this.devs = this.service.getDeveloperByBug(this.id_bug);
+    this.comments = this.service.getCommentsByBug(this.id_bug);
     this.ActivateEditBugComp = false;
   }
 
@@ -50,49 +50,49 @@ export class ShowBugComponent implements OnInit {
 
   deleteBugClick(bug: any) {
     if (confirm('Are you sure ?')) {
-      this.service.deleteBug(bug.id_bug).subscribe();
+      this.service.deleteBug(bug.id_bug).subscribe(data => {
+        this.router.navigateByUrl('');
+      });
     }
   }
 
 
   closeBugClick() {
     this.ActivateEditBugComp = false;
-    this.bugs = this.service.getBugTab(this.id);
-    this.devs = this.service.getDeveloperByBug(this.id);
-    this.comments = this.service.getCommentsByBug(this.id);
+    this.bugs = this.service.getBugTab(this.id_bug);
+    this.devs = this.service.getDeveloperByBug(this.id_bug);
+    this.comments = this.service.getCommentsByBug(this.id_bug);
   }
 
-  /*
-  devcomments: any;
-
-  anyfunction(comment: any) {
-    console.log(comment.id_developer);
-    this.devcomments = this.service.getDevByCommentId(comment.id);
-  }*/
-
+  addClick() {
+    this.comment = {
+      id_comment: 0
+    }
+    this.ModalTitle = "Add Comment";
+    this.ActivateAddEditCommentComp = true;
+  }
 
 
   editCommentClick(comment: any) {
     this.comment = comment;
     this.ModalTitle = "Edit Comment";
-    this.ActivateEditCommentComp = true;
+    this.ActivateAddEditCommentComp = true;
   }
 
 
   deleteCommentClick(comment: any) {
     if (confirm('Are you sure ?')) {
-      this.service.deleteComment(comment).subscribe(data => {
-        this.router.navigateByUrl('');
-      });
+      this.service.deleteComment(comment).subscribe();
+      this.bugs = this.service.getBugTab(this.id_bug);
+      this.devs = this.service.getDeveloperByBug(this.id_bug);
+      this.comments = this.service.getCommentsByBug(this.id_bug);
     }
   }
 
   closeCommentClick() {
-    this.ActivateEditCommentComp = false;
-    this.bugs = this.service.getBugTab(this.id);
-    this.devs = this.service.getDeveloperByBug(this.id);
-    this.comments = this.service.getCommentsByBug(this.id);
+    this.ActivateAddEditCommentComp = false;
+    this.bugs = this.service.getBugTab(this.id_bug);
+    this.devs = this.service.getDeveloperByBug(this.id_bug);
+    this.comments = this.service.getCommentsByBug(this.id_bug);
   }
-
-
 }

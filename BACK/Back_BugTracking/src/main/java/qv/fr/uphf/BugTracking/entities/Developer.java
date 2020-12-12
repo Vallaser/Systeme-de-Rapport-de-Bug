@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +18,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * Developer est la classe representant un developpeur
+ * 
+ * @author Quentin Colras
+ * @param id_developer L'identifiant unique du developpeur
+ * @param name Le nom du developpeur
+ * @param avatar Le chemin d'acces de l'image d'un developpeur
+ * @param bugs La liste des bugs affecter au developpeur
+ * @param comments La lites des commentaires qu'a poster le developpeur
+ *
+ */
+
 @Getter //Lombok
 @Setter
 @NoArgsConstructor
@@ -30,7 +42,7 @@ public class Developer {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY) 
 	private int id_developer;
 	private String name;
-	private String avatar; //à définir
+	private String avatar;
 	
 	@OneToMany(mappedBy = "developer")
 	@JsonManagedReference
@@ -38,7 +50,6 @@ public class Developer {
 	
 	@OneToMany(mappedBy = "developer", cascade = {CascadeType.REMOVE})
 	@JsonIgnore
-	//@JsonManagedReference
-	private List<Comment> comments; //Liste des bugs affecter au developer/
+	private List<Comment> comments; //Liste des commentaires qu'a poster le developpeur
 
 }

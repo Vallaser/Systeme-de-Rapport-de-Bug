@@ -31,11 +31,11 @@ import lombok.Setter;
  * @author Quentin Colras
  * @param id_bug L'identifiant unique du bug
  * @param title Le titre du bug
- * @param description La description générale du bug
- * @param priority La priorité du bug : [HAUTE, MOYENNE, BASSE]
- * @param etat L'état d'avancement du bug : [TO_DO, IN_PROGRESS, DONE]
- * @param dateCreation La date de création du bug
- * @param developer Le developer auquel est assigné le bug
+ * @param description La description generale du bug
+ * @param priority La priorite du bug : [HAUTE, MOYENNE, BASSE]
+ * @param etat L'etat d'avancement du bug : [TO_DO, IN_PROGRESS, DONE]
+ * @param dateCreation La date de creation du bug
+ * @param developer Le developer auquel est assigne le bug
  * @param comments Liste des commentaires du bug
  *
  */
@@ -56,7 +56,7 @@ public class Bug {
 	private String priority;
 	private String etat;
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(pattern = "YYYY:MM:dd")
+	@JsonFormat(pattern = "YYYY:MM:dd HH:mm:ss")
 	private Date dateCreation;
 	
 	@ManyToOne
@@ -66,7 +66,7 @@ public class Bug {
 	
 	@OneToMany(mappedBy = "bug" , cascade = {CascadeType.REMOVE})
 	@JsonManagedReference
-	private List<Comment> comments; //Liste des commentaires du bug*/
+	private List<Comment> comments; //Liste des commentaires du bug
 	
 	
 	public Developer getDeveloper()

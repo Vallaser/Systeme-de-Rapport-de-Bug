@@ -57,9 +57,6 @@ export class SharedService {
     return this.http.get<any>(this.APIUrl + '/bugscomments/' + id);
   }
 
-  /*getIdByBug(index: number, etat: string): Observable<number>{
-    return this.http.get<number>(this.APIUrl + '/bugsGetId/'+index+'/etat/'+etat);
-  }*/
 
   createBug(val: any) {
     return this.http.post(this.APIUrl + '/bugs', val);
