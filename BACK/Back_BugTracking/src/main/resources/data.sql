@@ -1,0 +1,16 @@
+INSERT INTO Developer(id_developer, name, avatar) VALUES (1, 'Colras', 'image_default1');
+INSERT INTO Developer(id_developer, name, avatar) VALUES (2, 'Bal', 'image_default2');
+INSERT INTO Developer(id_developer, name, avatar) VALUES (3, 'Dupont', 'image_default2');
+INSERT INTO Developer(id_developer, name, avatar) VALUES (4, 'Laporte', 'image_default1');
+INSERT INTO Bug (id_bug, title, description, priority, etat, date_creation, id_developer) VALUES (1, 'Problème connexion', 'Problème de liaison à la base de données', 'HAUTE', 'TO_DO', '2020-09-16 16:32:28', 1);
+INSERT INTO Bug (id_bug, title, description, priority, etat, date_creation, id_developer) VALUES (2, 'Mauvaise insertion', 'Dans la classe Compte, il y a une mauvaise insertion du type', 'BASSE', 'IN_PROGRESS', '2020-07-13 17:26:13', 1);
+INSERT INTO Bug (id_bug, title, description, priority, etat, date_creation, id_developer) VALUES (3, 'Faille sécurité', 'Problème de sécurité dans le classe CompteBancaire', 'HAUTE', 'TO_DO', '2020-01-27 10:07:43', null);
+INSERT INTO Bug (id_bug, title, description, priority, etat, date_creation, id_developer) VALUES (4, 'Mauvaise gestion', 'Les clients ne sont pas répertoriés dans le bon dossier', 'MOYENNE', 'DONE', '2020-07-12 13:35:56', 2);
+INSERT INTO Bug (id_bug, title, description, priority, etat, date_creation, id_developer) VALUES (5, 'Problème d envoi', 'Le mail au client ne s envoie pas', 'MOYENNE', 'DONE', '2020-05-06 14:27:42', 3);
+INSERT INTO Bug (id_bug, title, description, priority, etat, date_creation, id_developer) VALUES (6, 'Problème affichage', 'Problème affichage du client', 'BASSE', 'IN_PROGRESS', '2020-11-21 21:06:01', 1);
+INSERT INTO Comment(id_comment, comment, date_comment, id_bug, id_developer) VALUES (1, 'Quelqu un a une solution svp ?', '2020-09-17 16:35:47', 1, 1);
+INSERT INTO Comment(id_comment, comment, date_comment, id_bug, id_developer) VALUES (2, 'Vérifie l url dans la connexion à la base de données', '2020-09-18 17:10:10', 1, 2);
+INSERT INTO Comment(id_comment, comment, date_comment, id_bug, id_developer) VALUES (3, 'C est bon, bug réglé', '2020-07-17 09:36:12', 4, 2);
+INSERT INTO Comment(id_comment, comment, date_comment, id_bug, id_developer) VALUES (4, 'Possible d avoir plus de détail, c est assez générale...', '2020-11-22 08:33:45', 5, 4);
+INSERT INTO Comment(id_comment, comment, date_comment, id_bug, id_developer) VALUES (5, 'Le bug a été réglé ?', '2020-07-17 18:37:03', 2, 1);
+INSERT INTO Comment(id_comment, comment, date_comment, id_bug, id_developer) VALUES (6, 'Apparemment non ... il y a quelqu un ? Maman c est toi ? J ai peur du noir :/', '2020-09-01 19:47:51', 2, 3);
